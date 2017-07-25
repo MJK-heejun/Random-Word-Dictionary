@@ -7,7 +7,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SettingComponent implements OnInit {
 
+    wordType: string = 'noun';
+    isAutoDefLoad: boolean = true;
+
   constructor() { }
+
+  getCurrentWordType(): string {
+      return this.wordType;
+  }
+
+  //isAutoDefLoad(): boolean {
+  //    return false;
+  //}
+
 
   ngOnInit() {
   }

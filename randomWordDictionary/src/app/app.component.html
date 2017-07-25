@@ -2,16 +2,14 @@
     <md-sidenav-container fxLayout="column" fxFlexFill>
 
         <md-toolbar fxLayout="row">
-
-            <div class="example-sidenav-content">
+            <div class="sidenav-content">
                 <button type="button" md-button (click)="sidenav.open()">
-                    Open sidenav
+                    <i class="fa fa-bars fa-2x" aria-hidden="true"></i>
                 </button>
             </div>
-            <h3>page title</h3>
-            <span>search icon</span>
+            <h3>Random Word Dictionary</h3>            
         </md-toolbar>
-        <md-toolbar>
+        <md-toolbar class="main-content">
             <md-tab-group md-stretch-tabs>
                 <md-tab label="Random">
                     <app-random></app-random>

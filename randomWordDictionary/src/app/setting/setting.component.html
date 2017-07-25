@@ -1,23 +1,27 @@
-<p>
-  setting works!
-</p>
+<div id="settingComponent">
+    <h2>Settings</h2>
 
-<p>
-    setting works!
-</p><p>
-    setting works!
-</p><p>
-    setting works!
-</p><p>
-    setting works!
-</p><p>
-    setting works!
-</p><p>
-    setting works!
-</p><p>
-    setting works!
-</p><p>
-    setting works!
-</p><p>
-    setting works!
-</p>
+    <md-radio-group [(ngModel)]="wordType" fxLayout="column">
+        <md-radio-button [value]="'any'">
+            Any
+        </md-radio-button>
+        <md-radio-button [value]="'verb'">
+            Verb
+        </md-radio-button>
+        <md-radio-button [value]="'noun'">
+            Noun
+        </md-radio-button>
+        <md-radio-button [value]="'adjective'">
+            Adjective
+        </md-radio-button>
+    </md-radio-group>
+
+    <md-divider></md-divider>
+
+    <div class="md-divider"></div>
+
+
+    <section>
+        <md-checkbox  [(ngModel)]="isAutoDefLoad">Auto definition loading</md-checkbox>
+    </section>
+</div>

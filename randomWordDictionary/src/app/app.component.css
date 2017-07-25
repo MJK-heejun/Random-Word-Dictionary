@@ -7,7 +7,7 @@ md-toolbar{
 
 md-tab-group{
     margin: 0;
-    border: 1px solid blue;
+    border-top: 3px solid #000000; /*black*/
     width: 100vw;
     overflow: hidden;
 }
@@ -16,6 +16,10 @@ md-tab-group{
   .mat-tab-label[role^='tab'] {
     min-width: 72px;
   }
+}
+
+.main-content{
+
 }
 
     /*

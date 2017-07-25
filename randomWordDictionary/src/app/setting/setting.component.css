@@ -1,0 +1,14 @@
+#settingComponent{
+    padding: 10px;
+}
+
+md-radio-button, md-checkbox{
+    padding: 10px;
+}
+
+.md-divider {
+    width: 100%;
+    border-width: 1px;
+    border-style: solid;
+    margin: 10px 0;
+}
