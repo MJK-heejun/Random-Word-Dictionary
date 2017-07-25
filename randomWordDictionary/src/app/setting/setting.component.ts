@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SettingServiceService } from '../setting-service.service';
 
 @Component({
   selector: 'app-setting',
@@ -10,18 +11,19 @@ export class SettingComponent implements OnInit {
     wordType: string = 'noun';
     isAutoDefLoad: boolean = true;
 
-  constructor() { }
+    constructor(private settingService: SettingServiceService) { }
 
-  getCurrentWordType(): string {
-      return this.wordType;
-  }
 
   //isAutoDefLoad(): boolean {
   //    return false;
   //}
 
 
-  ngOnInit() {
-  }
-
+    ngOnInit() {
+        this.wordType = this.settingService.GetCurrentWordType();
+    }
+    onChange() {
+        console.log("changed");
+        this.settingService.SetWordType(this.wordType);
+    }
 }

@@ -7,11 +7,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
-
+//component
 import { AppComponent } from './app.component';
 import { RandomComponent } from './random/random.component';
 import { SettingComponent } from './setting/setting.component';
-
+//service
+import { SettingServiceService } from './setting-service.service';
 
 
 @NgModule({
@@ -28,7 +29,7 @@ import { SettingComponent } from './setting/setting.component';
       FlexLayoutModule,
       FormsModule
   ],
-  providers: [],
+  providers: [SettingServiceService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
