@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-
 import { RandomWordService } from '../random-word.service';
 import { SettingServiceService } from '../setting-service.service';
 

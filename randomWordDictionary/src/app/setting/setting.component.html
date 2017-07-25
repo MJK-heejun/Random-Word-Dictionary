@@ -1,7 +1,7 @@
 <div id="settingComponent">
     <h2>Settings</h2>
 
-    <md-radio-group [(ngModel)]="wordType" (ngModelChange)="onChange($event)" fxLayout="column">
+    <md-radio-group [(ngModel)]="wordType" (ngModelChange)="onChange()" fxLayout="column">
         <md-radio-button [value]="'any'">
             Any
         </md-radio-button>
@@ -15,7 +15,6 @@
             Adjective
         </md-radio-button>
     </md-radio-group>
-    <span>{{wordType}}</span>
     <md-divider></md-divider>
 
     <div class="md-divider"></div>
