@@ -1,6 +1,7 @@
 #appComp{
     height:100vh;
 }
+
 md-toolbar{
     padding: 0;
 }
@@ -16,10 +17,6 @@ md-tab-group{
   .mat-tab-label[role^='tab'] {
     min-width: 72px;
   }
-}
-
-.main-content{
-
 }
 
     /*
