@@ -47,12 +47,12 @@
     <TypeScriptCompile Include="src\app\app.component.spec.ts" />
     <TypeScriptCompile Include="src\app\app.component.ts" />
     <TypeScriptCompile Include="src\app\app.module.ts" />
-    <TypeScriptCompile Include="src\app\random-word.service.spec.ts" />
-    <TypeScriptCompile Include="src\app\random-word.service.ts" />
     <TypeScriptCompile Include="src\app\random\random.component.spec.ts" />
     <TypeScriptCompile Include="src\app\random\random.component.ts" />
     <TypeScriptCompile Include="src\app\setting\setting.component.spec.ts" />
     <TypeScriptCompile Include="src\app\setting\setting.component.ts" />
+    <TypeScriptCompile Include="src\app\word.service.spec.ts" />
+    <TypeScriptCompile Include="src\app\word.service.ts" />
     <TypeScriptCompile Include="src\environments\environment.prod.ts" />
     <TypeScriptCompile Include="src\environments\environment.ts" />
     <TypeScriptCompile Include="src\main.ts" />
