@@ -1,8 +1,10 @@
 ﻿<div id="randomComponent">
     <div>
-        {{myData}}
+        {{myWord}}
     </div>
 
+    <app-definition [word]="myWord"></app-definition>
+    <app-audio></app-audio>
     <div>
         <button md-raised-button (click)="onRandomClick()">New Random Word</button>
     </div>

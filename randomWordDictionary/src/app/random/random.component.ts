@@ -6,33 +6,34 @@ import { SettingServiceService } from '../setting-service.service';
   selector: 'app-random',
   templateUrl: './random.component.html',
   styleUrls: ['./random.component.css'],
-  providers: [WordService]
+  providers: []
 })
 export class RandomComponent implements OnInit {
 
-    myData: string;
+    myWord: string;
 
     constructor(private wordService: WordService, private settingService: SettingServiceService) { }
 
     ngOnInit() {
-        //let wordType = this.settingComponent.getCurrentWordType() == "any" ? null : this.settingComponent.getCurrentWordType();
-        //console.log(`currnet word type is '${wordType}'`);
-        //this.wordService.getRandomWord(wordType).subscribe( //subscribe to the observable return method
-        //    data => this.myData = JSON.stringify(data),
-        //    error => alert(error),
-        //    () => console.log("finished")
-        //);
-        
+   
     }
 
     onRandomClick() {
         let wordType = this.settingService.GetCurrentWordType() == "any" ? null : this.settingService.GetCurrentWordType();
         
         this.wordService.GetRandomWord(wordType).subscribe( //subscribe to the observable return method
-            data => this.myData = JSON.stringify(data),
+            data => this.myWord = data.word,
             error => alert(error),
             () => console.log("finished")
         );        
+    }
+
+    loadDefinition() {
+
+    }
+
+    loadAudio() {
+
     }
 
 }

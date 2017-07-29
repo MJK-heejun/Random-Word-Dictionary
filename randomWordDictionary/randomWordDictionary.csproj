@@ -28,6 +28,10 @@
     <Content Include="README.md" />
     <Content Include="src\app\app.component.css" />
     <Content Include="src\app\app.component.html" />
+    <Content Include="src\app\audio\audio.component.css" />
+    <Content Include="src\app\audio\audio.component.html" />
+    <Content Include="src\app\definition\definition.component.css" />
+    <Content Include="src\app\definition\definition.component.html" />
     <Content Include="src\app\random\random.component.css" />
     <Content Include="src\app\random\random.component.html" />
     <Content Include="src\app\setting\setting.component.css" />
@@ -47,6 +51,10 @@
     <TypeScriptCompile Include="src\app\app.component.spec.ts" />
     <TypeScriptCompile Include="src\app\app.component.ts" />
     <TypeScriptCompile Include="src\app\app.module.ts" />
+    <TypeScriptCompile Include="src\app\audio\audio.component.spec.ts" />
+    <TypeScriptCompile Include="src\app\audio\audio.component.ts" />
+    <TypeScriptCompile Include="src\app\definition\definition.component.spec.ts" />
+    <TypeScriptCompile Include="src\app\definition\definition.component.ts" />
     <TypeScriptCompile Include="src\app\random\random.component.spec.ts" />
     <TypeScriptCompile Include="src\app\random\random.component.ts" />
     <TypeScriptCompile Include="src\app\setting\setting.component.spec.ts" />

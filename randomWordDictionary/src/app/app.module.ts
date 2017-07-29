@@ -11,15 +11,21 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { AppComponent } from './app.component';
 import { RandomComponent } from './random/random.component';
 import { SettingComponent } from './setting/setting.component';
+import { DefinitionComponent } from './definition/definition.component';
+import { AudioComponent } from './audio/audio.component';
 //service
 import { SettingServiceService } from './setting-service.service';
+import { WordService } from './word.service';
+
 
 
 @NgModule({
   declarations: [
     AppComponent,
     RandomComponent,
-    SettingComponent
+    SettingComponent,
+    DefinitionComponent,
+    AudioComponent
   ],
   imports: [
       BrowserModule,
@@ -29,7 +35,7 @@ import { SettingServiceService } from './setting-service.service';
       FlexLayoutModule,
       FormsModule
   ],
-  providers: [SettingServiceService ],
+  providers: [SettingServiceService, WordService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
