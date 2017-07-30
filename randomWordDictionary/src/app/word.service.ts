@@ -12,7 +12,7 @@ export class WordService {
     }
 
     public GetRandomWord(wordType: string) {
-        let randomApi = `${this.baseUrl}words.json/randomWord?useCanonical=true&hasDictionaryDef=false&minCorpusCount=0&maxCorpusCount=-1&minDictionaryCount=1&maxDictionaryCount=-1&minLength=5&maxLength=-1&api_key=a2a73e7b926c924fad7001ca3111acd55af2ffabf50eb4ae5`;
+        let randomApi = `${this.baseUrl}words.json/randomWord?hasDictionaryDef=true&hasDictionaryDef=false&minCorpusCount=0&maxCorpusCount=-1&minDictionaryCount=1&maxDictionaryCount=-1&minLength=5&maxLength=-1&api_key=a2a73e7b926c924fad7001ca3111acd55af2ffabf50eb4ae5`;
         let url = wordType ? `${randomApi}&includePartOfSpeech=${wordType}` : randomApi;
         return this.http.get(url)
             .map((res: Response) => res.json()); //convert observable into json format

@@ -1,3 +1,8 @@
 ﻿#randomComponent{
     overflow: hidden;
+    height: 70vh;
+}
+
+h2 {
+    text-align: center;
 }

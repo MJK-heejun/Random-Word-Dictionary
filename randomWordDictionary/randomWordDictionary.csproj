@@ -57,6 +57,7 @@
     <TypeScriptCompile Include="src\app\definition\definition.component.ts" />
     <TypeScriptCompile Include="src\app\random\random.component.spec.ts" />
     <TypeScriptCompile Include="src\app\random\random.component.ts" />
+    <TypeScriptCompile Include="src\app\setting-service.service.ts" />
     <TypeScriptCompile Include="src\app\setting\setting.component.spec.ts" />
     <TypeScriptCompile Include="src\app\setting\setting.component.ts" />
     <TypeScriptCompile Include="src\app\word.service.spec.ts" />

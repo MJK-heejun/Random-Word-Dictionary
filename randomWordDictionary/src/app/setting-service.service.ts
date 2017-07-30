@@ -4,10 +4,10 @@ import { Injectable } from '@angular/core';
 export class SettingServiceService {
 
     private wordType: string;
-    private isAutoDefLoad: boolean = true;
+    private isAutoAudioLoad: boolean = true;
 
     constructor() {
-        this.wordType = "noun";
+        this.wordType = "any";
     }
 
   public GetCurrentWordType(): string {
@@ -19,5 +19,12 @@ export class SettingServiceService {
   }
 
 
+  public IsAutoAudioLoading(): boolean {
+      return this.isAutoAudioLoad;
+  }
+
+  public SetAutoAudio(autoAudio: boolean) {
+      this.isAutoAudioLoad = autoAudio;
+  }
 
 }

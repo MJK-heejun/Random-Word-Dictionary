@@ -9,15 +9,9 @@ import { SettingServiceService } from '../setting-service.service';
 export class SettingComponent implements OnInit {
 
     wordType: string = 'noun';
-    isAutoDefLoad: boolean = true;
+    isAutoAudioLoad: boolean = true;
 
     constructor(private settingService: SettingServiceService) { }
-
-
-  //isAutoDefLoad(): boolean {
-  //    return false;
-  //}
-
 
     ngOnInit() {
         this.wordType = this.settingService.GetCurrentWordType();
@@ -25,5 +19,10 @@ export class SettingComponent implements OnInit {
     onChange() {
         console.log("changed");
         this.settingService.SetWordType(this.wordType);
+    }
+
+
+    onChangeAudio() {
+        this.settingService.SetAutoAudio(this.isAutoAudioLoad);
     }
 }

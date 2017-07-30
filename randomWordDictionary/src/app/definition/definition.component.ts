@@ -21,12 +21,20 @@ export class DefinitionComponent implements OnInit {
     ngOnChanges() {
         if (this.word) {
             this.wordService.GetDefinition(this.word).subscribe( //subscribe to the observable return method
-                data => this.definition = data[0] ? data[0].text : "definition not found",
-                error => alert(error),
-                () => console.log("finished")
+                data => {
+                    this.definition = data[0] ? data[0].text : "definition not found";
+                    if (this.definition.substring(0, 15) == "Plural form of ") { //if plural form found.....
+                        let newSearchWord = this.definition.substring(15, this.definition.length - 1);
+                        this.wordService.GetDefinition(newSearchWord).subscribe(
+                            data => {
+                                let additionalDef = data[0] ? data[0].text : "definition not found";
+                                this.definition = `${this.definition} (${additionalDef})`;
+                            }
+                        );
+                    }
+                },
+                error => alert(error)
             );    
         }
-
-
     }
 }
