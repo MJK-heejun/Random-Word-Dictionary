@@ -5,7 +5,7 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class WordService {
 
-    baseUrl: string = `api.wordnik.com:80/v4/`;    
+    baseUrl: string = `api.wordnik.com/v4/`;    
 
     constructor(private http: Http) {
         this.baseUrl = window.location.protocol == 'https:' ? `https://${this.baseUrl}` : `http://${this.baseUrl}`;
