@@ -545,7 +545,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var WordService = (function () {
     function WordService(http) {
         this.http = http;
-        this.baseUrl = "api.wordnik.com:80/v4/";
+        this.baseUrl = "api.wordnik.com/v4/";
         this.baseUrl = window.location.protocol == 'https:' ? "https://" + this.baseUrl : "http://" + this.baseUrl;
     }
     WordService.prototype.GetRandomWord = function (wordType) {
