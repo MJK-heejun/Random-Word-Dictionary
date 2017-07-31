@@ -6,8 +6,9 @@
         <app-definition [word]="myWord"></app-definition>
         <app-audio [word]="myWord"></app-audio>
     </div>
-    <div fxLayout="row" fxLayoutAlign="center center">
+    <div fxLayout="row">
         <button md-raised-button (click)="onRandomClick()">New Random Word</button>
+        <button md-raised-button (click)="onSaveClick()">Save</button>
     </div>
 
 </div>

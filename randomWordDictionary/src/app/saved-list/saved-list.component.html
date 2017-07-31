@@ -1,0 +1,12 @@
+<div id="savedListComponent">
+    <md-list>
+        <md-list-item *ngFor="let word of wordList">
+            <h4 md-line (click)="onListItemClick(word)">{{word}}</h4>
+        </md-list-item>
+        <md-divider></md-divider>
+    </md-list>
+</div>
+
+<div fxLayout="column" fxLayoutAlign="center center">
+    <button md-raised-button (click)="onClear()">Clear</button>
+</div>

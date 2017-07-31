@@ -1,5 +1,7 @@
 #appComp{
     height:100vh;
+    overflow: hidden;
+    overflow: auto;
 }
 
 md-toolbar{

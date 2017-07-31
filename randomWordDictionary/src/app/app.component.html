@@ -10,12 +10,15 @@
             <h3>Random Dictionary</h3>            
         </md-toolbar>
         <div class="main-content" fxFlexFill>
-            <md-tab-group md-stretch-tabs>
+            <md-tab-group md-stretch-tabs 
+                          (selectedIndexChange)="selectedIndexChange($event)"
+                          [selectedIndex]="selectedIndex">
                 <md-tab label="Random">
-                    <app-random></app-random>
+                    <app-random [newWord]="newWord"></app-random>
                 </md-tab>
                 <md-tab label="Saved">
-                    <h4 style="padding-left: 5px;">sorry. not yet implemented</h4>
+                    <app-saved-list (selectedWord)="wordFromList($event)"
+                                    [selectedIndex]="selectedIndex"></app-saved-list>
                 </md-tab>
             </md-tab-group>
         </div>

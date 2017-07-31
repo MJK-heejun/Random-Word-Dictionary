@@ -30,4 +30,39 @@ export class WordService {
             .map((res: Response) => res.json()); //convert observable into json format
     }
 
+    public GetList() {
+        let key = "randomWordDictionaryArray";
+        return localStorage[key] ? JSON.parse(localStorage[key]) : [];
+    }
+
+
+    public AddToList(word: string) {
+        if (word) {
+            let key = "randomWordDictionaryArray";
+            if (!localStorage[key])
+                localStorage.setItem(key, JSON.stringify([]));
+            let currentArr = JSON.parse(localStorage[key]);
+            if (!currentArr.includes(word)) {
+                currentArr.push(word);
+                localStorage.setItem(key, JSON.stringify(currentArr));
+            }
+            console.log("storage list");
+            console.log(localStorage[key]);
+        }
+    }
+
+    public ClearList() {
+        localStorage.clear();
+    }
+
+    public RemoveFromList(word:string) {
+        let key = "randomWordDictionaryArray";
+        let currentArr = JSON.parse(localStorage[key]);
+        let index = currentArr.indexOf(word);
+        if (index !== -1) 
+            currentArr.splice(index, 1);      
+        localStorage.setItem(key, JSON.stringify(currentArr));  
+        console.log("storage list");
+        console.log(localStorage[key]);
+    }
 }

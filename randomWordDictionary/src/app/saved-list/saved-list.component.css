@@ -1,0 +1,13 @@
+#savedListComponent {
+    overflow-y: scroll;
+    height: 70vh;
+}
+
+
+md-list{
+    /*height: 50vh;*/
+}
+
+md-list-item {
+    
+}

@@ -34,6 +34,8 @@
     <Content Include="src\app\definition\definition.component.html" />
     <Content Include="src\app\random\random.component.css" />
     <Content Include="src\app\random\random.component.html" />
+    <Content Include="src\app\saved-list\saved-list.component.css" />
+    <Content Include="src\app\saved-list\saved-list.component.html" />
     <Content Include="src\app\setting\setting.component.css" />
     <Content Include="src\app\setting\setting.component.html" />
     <Content Include="src\favicon.ico" />
@@ -57,6 +59,8 @@
     <TypeScriptCompile Include="src\app\definition\definition.component.ts" />
     <TypeScriptCompile Include="src\app\random\random.component.spec.ts" />
     <TypeScriptCompile Include="src\app\random\random.component.ts" />
+    <TypeScriptCompile Include="src\app\saved-list\saved-list.component.spec.ts" />
+    <TypeScriptCompile Include="src\app\saved-list\saved-list.component.ts" />
     <TypeScriptCompile Include="src\app\setting-service.service.ts" />
     <TypeScriptCompile Include="src\app\setting\setting.component.spec.ts" />
     <TypeScriptCompile Include="src\app\setting\setting.component.ts" />

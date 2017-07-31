@@ -16,6 +16,7 @@ import { AudioComponent } from './audio/audio.component';
 //service
 import { SettingServiceService } from './setting-service.service';
 import { WordService } from './word.service';
+import { SavedListComponent } from './saved-list/saved-list.component';
 
 
 
@@ -25,7 +26,8 @@ import { WordService } from './word.service';
     RandomComponent,
     SettingComponent,
     DefinitionComponent,
-    AudioComponent
+    AudioComponent,
+    SavedListComponent
   ],
   imports: [
       BrowserModule,

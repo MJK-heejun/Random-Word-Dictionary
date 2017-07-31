@@ -7,10 +7,15 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
     title = 'app';
-    selectedIndex = 0;
+    selectedIndex: number = 0;
+    newWord: string;
 
-    setIndex(index){
-        this.selectedIndex = index;
-        console.log(`new index ${this.selectedIndex}`);
-    };
+    selectedIndexChange(val: number) {
+        this.selectedIndex = val;
+    }
+
+    wordFromList(ev) {
+        this.selectedIndex = 0;
+        this.newWord = ev;
+    }
 }

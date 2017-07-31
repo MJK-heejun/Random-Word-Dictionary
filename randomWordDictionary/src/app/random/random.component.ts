@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { WordService } from '../word.service';
 import { SettingServiceService } from '../setting-service.service';
 
@@ -9,7 +9,7 @@ import { SettingServiceService } from '../setting-service.service';
   providers: []
 })
 export class RandomComponent implements OnInit {
-
+    @Input() newWord: string; //word from saved list
     myWord: string;
 
     constructor(private wordService: WordService, private settingService: SettingServiceService) { }
@@ -28,12 +28,14 @@ export class RandomComponent implements OnInit {
         );        
     }
 
-    loadDefinition() {
-
+    onSaveClick() {
+        this.wordService.AddToList(this.myWord);
+        alert("saved");
     }
 
-    loadAudio() {
-
+    //word from saved list
+    ngOnChanges() {
+        this.myWord = this.newWord;
     }
 
 }
