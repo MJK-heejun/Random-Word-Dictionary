@@ -21,7 +21,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, "#appComp{\r\n    height:100vh;\r\n}\r\n\r\nmd-toolbar{\r\n    padding: 0;\r\n}\r\n\r\nmd-tab-group{\r\n    margin: 0;\r\n    border-top: 3px solid #000000; /*black*/\r\n    \r\n    overflow: hidden;\r\n}\r\n\r\n.mat-sidenav-container > .mat-sidenav > .mat-tab-group > .mat-tab-header > .mat-tab-label-container > .mat-tab-list > .mat-tab-labels {\r\n  .mat-tab-label[role^='tab'] {\r\n    min-width: 50px;\r\n  }\r\n}\r\n\r\n    /*\r\n/deep/.mat-tab-label, /deep/.mat-tab-label-active{\r\n min-width: 0!important;\r\n padding: 3px!important;\r\n margin: 3px!important;\r\n}\r\n*/", ""]);
+exports.push([module.i, "#appComp{\r\n    height:100vh;\r\n    overflow: hidden;\r\n    overflow: auto;\r\n}\r\n\r\nmd-toolbar{\r\n    padding: 0;\r\n}\r\n\r\nmd-tab-group{\r\n    margin: 0;\r\n    border-top: 3px solid #000000; /*black*/\r\n    \r\n    overflow: hidden;\r\n}\r\n\r\n.mat-sidenav-container > .mat-sidenav > .mat-tab-group > .mat-tab-header > .mat-tab-label-container > .mat-tab-list > .mat-tab-labels {\r\n  .mat-tab-label[role^='tab'] {\r\n    min-width: 50px;\r\n  }\r\n}\r\n\r\n    /*\r\n/deep/.mat-tab-label, /deep/.mat-tab-label-active{\r\n min-width: 0!important;\r\n padding: 3px!important;\r\n margin: 3px!important;\r\n}\r\n*/", ""]);
 
 // exports
 
@@ -34,7 +34,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/app.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div id=\"appComp\">\r\n    <md-sidenav-container fxLayout=\"column\" fxFlexFill>\r\n\r\n        <md-toolbar fxLayout=\"row\">\r\n            <div class=\"sidenav-content\">\r\n                <button type=\"button\" md-button (click)=\"sidenav.open()\">\r\n                    <i class=\"fa fa-bars fa-2x\" aria-hidden=\"true\"></i>\r\n                </button>\r\n            </div>\r\n            <h3>Random Dictionary</h3>            \r\n        </md-toolbar>\r\n        <div class=\"main-content\" fxFlexFill>\r\n            <md-tab-group md-stretch-tabs>\r\n                <md-tab label=\"Random\">\r\n                    <app-random></app-random>\r\n                </md-tab>\r\n                <md-tab label=\"Saved\">\r\n                    <h4 style=\"padding-left: 5px;\">sorry. not yet implemented</h4>\r\n                </md-tab>\r\n            </md-tab-group>\r\n        </div>\r\n\r\n\r\n        <md-sidenav #sidenav>\r\n            <app-setting></app-setting>\r\n        </md-sidenav>\r\n    </md-sidenav-container>\r\n</div>\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n"
+module.exports = "<div id=\"appComp\">\r\n    <md-sidenav-container fxLayout=\"column\" fxFlexFill>\r\n\r\n        <md-toolbar fxLayout=\"row\">\r\n            <div class=\"sidenav-content\">\r\n                <button type=\"button\" md-button (click)=\"sidenav.open()\">\r\n                    <i class=\"fa fa-bars fa-2x\" aria-hidden=\"true\"></i>\r\n                </button>\r\n            </div>\r\n            <h3>Random Dictionary</h3>            \r\n        </md-toolbar>\r\n        <div class=\"main-content\" fxFlexFill>\r\n            <md-tab-group md-stretch-tabs \r\n                          (selectedIndexChange)=\"selectedIndexChange($event)\"\r\n                          [selectedIndex]=\"selectedIndex\">\r\n                <md-tab label=\"Random\">\r\n                    <app-random [newWord]=\"newWord\"></app-random>\r\n                </md-tab>\r\n                <md-tab label=\"Saved\">\r\n                    <app-saved-list (selectedWord)=\"wordFromList($event)\"\r\n                                    [selectedIndex]=\"selectedIndex\"></app-saved-list>\r\n                </md-tab>\r\n            </md-tab-group>\r\n        </div>\r\n\r\n\r\n        <md-sidenav #sidenav>\r\n            <app-setting></app-setting>\r\n        </md-sidenav>\r\n    </md-sidenav-container>\r\n</div>\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n"
 
 /***/ }),
 
@@ -56,11 +56,13 @@ var AppComponent = (function () {
         this.title = 'app';
         this.selectedIndex = 0;
     }
-    AppComponent.prototype.setIndex = function (index) {
-        this.selectedIndex = index;
-        console.log("new index " + this.selectedIndex);
+    AppComponent.prototype.selectedIndexChange = function (val) {
+        this.selectedIndex = val;
     };
-    ;
+    AppComponent.prototype.wordFromList = function (ev) {
+        this.selectedIndex = 0;
+        this.newWord = ev;
+    };
     return AppComponent;
 }());
 AppComponent = __decorate([
@@ -93,6 +95,7 @@ AppComponent = __decorate([
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__audio_audio_component__ = __webpack_require__("../../../../../src/app/audio/audio.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__setting_service_service__ = __webpack_require__("../../../../../src/app/setting-service.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__word_service__ = __webpack_require__("../../../../../src/app/word.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__saved_list_saved_list_component__ = __webpack_require__("../../../../../src/app/saved-list/saved-list.component.ts");
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppModule; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -116,6 +119,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 //service
 
 
+
 var AppModule = (function () {
     function AppModule() {
     }
@@ -128,7 +132,8 @@ AppModule = __decorate([
             __WEBPACK_IMPORTED_MODULE_8__random_random_component__["a" /* RandomComponent */],
             __WEBPACK_IMPORTED_MODULE_9__setting_setting_component__["a" /* SettingComponent */],
             __WEBPACK_IMPORTED_MODULE_10__definition_definition_component__["a" /* DefinitionComponent */],
-            __WEBPACK_IMPORTED_MODULE_11__audio_audio_component__["a" /* AudioComponent */]
+            __WEBPACK_IMPORTED_MODULE_11__audio_audio_component__["a" /* AudioComponent */],
+            __WEBPACK_IMPORTED_MODULE_14__saved_list_saved_list_component__["a" /* SavedListComponent */]
         ],
         imports: [
             __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__["a" /* BrowserModule */],
@@ -257,7 +262,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/definition/definition.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<p>\n    {{definition}}\n</p>\n"
+module.exports = "<p>\r\n    {{definition}}\r\n</p>\r\n"
 
 /***/ }),
 
@@ -330,7 +335,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, "#randomComponent{\r\n    overflow: hidden;\r\n    height: 70vh;\r\n}\r\n\r\nh2 {\r\n    text-align: center;\r\n}", ""]);
+exports.push([module.i, "#randomComponent{\r\n    overflow: hidden;\r\n    height: 70vh;\r\n}\r\n\r\nh2 {\r\n    text-align: center;\r\n}\r\n\r\nbutton{\r\n    margin: 10px;\r\n}", ""]);
 
 // exports
 
@@ -343,7 +348,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/random/random.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div id=\"randomComponent\" fxLayout=\"column\" fxLayoutAlign=\"space-between center\">\r\n    <div>\r\n        <h2>\r\n            {{myWord}}\r\n        </h2>\r\n        <app-definition [word]=\"myWord\"></app-definition>\r\n        <app-audio [word]=\"myWord\"></app-audio>\r\n    </div>\r\n    <div fxLayout=\"row\" fxLayoutAlign=\"center center\">\r\n        <button md-raised-button (click)=\"onRandomClick()\">New Random Word</button>\r\n    </div>\r\n\r\n</div>"
+module.exports = "<div id=\"randomComponent\" fxLayout=\"column\" fxLayoutAlign=\"space-between center\">\r\n    <div>\r\n        <h2>\r\n            {{myWord}}\r\n        </h2>\r\n        <app-definition [word]=\"myWord\"></app-definition>\r\n        <app-audio [word]=\"myWord\"></app-audio>\r\n    </div>\r\n    <div fxLayout=\"row\">\r\n        <button md-raised-button (click)=\"onRandomClick()\">New Random Word</button>\r\n        <button md-raised-button (click)=\"onSaveClick()\">Save</button>\r\n    </div>\r\n\r\n</div>"
 
 /***/ }),
 
@@ -381,12 +386,20 @@ var RandomComponent = (function () {
         function (//subscribe to the observable return method
             data) { return _this.myWord = data.word; }, function (error) { return alert(error); }, function () { return console.log("finished"); });
     };
-    RandomComponent.prototype.loadDefinition = function () {
+    RandomComponent.prototype.onSaveClick = function () {
+        this.wordService.AddToList(this.myWord);
+        alert("saved");
     };
-    RandomComponent.prototype.loadAudio = function () {
+    //word from saved list
+    RandomComponent.prototype.ngOnChanges = function () {
+        this.myWord = this.newWord;
     };
     return RandomComponent;
 }());
+__decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["O" /* Input */])(),
+    __metadata("design:type", String)
+], RandomComponent.prototype, "newWord", void 0);
 RandomComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_5" /* Component */])({
         selector: 'app-random',
@@ -399,6 +412,94 @@ RandomComponent = __decorate([
 
 var _a, _b;
 //# sourceMappingURL=random.component.js.map
+
+/***/ }),
+
+/***/ "../../../../../src/app/saved-list/saved-list.component.css":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "#savedListComponent {\r\n    overflow-y: scroll;\r\n    height: 70vh;\r\n}\r\n\r\n\r\nmd-list{\r\n    /*height: 50vh;*/\r\n}\r\n\r\nmd-list-item {\r\n    \r\n}", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../../src/app/saved-list/saved-list.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<div id=\"savedListComponent\">\r\n    <md-list>\r\n        <md-list-item *ngFor=\"let word of wordList\">\r\n            <h4 md-line (click)=\"onListItemClick(word)\">{{word}}</h4>\r\n        </md-list-item>\r\n        <md-divider></md-divider>\r\n    </md-list>\r\n</div>\r\n\r\n<div fxLayout=\"column\" fxLayoutAlign=\"center center\">\r\n    <button md-raised-button (click)=\"onClear()\">Clear</button>\r\n</div>"
+
+/***/ }),
+
+/***/ "../../../../../src/app/saved-list/saved-list.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__word_service__ = __webpack_require__("../../../../../src/app/word.service.ts");
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SavedListComponent; });
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+var SavedListComponent = (function () {
+    function SavedListComponent(wordService) {
+        this.wordService = wordService;
+        this.selectedWord = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["F" /* EventEmitter */]();
+    }
+    SavedListComponent.prototype.ngOnInit = function () {
+        this.wordList = this.wordService.GetList();
+    };
+    SavedListComponent.prototype.onListItemClick = function (word) {
+        console.log(word + " clicked");
+        this.selectedWord.emit(word);
+    };
+    SavedListComponent.prototype.onClear = function () {
+        this.wordService.ClearList();
+        this.wordList = this.wordService.GetList();
+    };
+    SavedListComponent.prototype.ngOnChanges = function () {
+        //refresh the list
+        if (this.selectedIndex == 1)
+            this.wordList = this.wordService.GetList();
+    };
+    return SavedListComponent;
+}());
+__decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["O" /* Input */])(),
+    __metadata("design:type", Number)
+], SavedListComponent.prototype, "selectedIndex", void 0);
+__decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_4" /* Output */])(),
+    __metadata("design:type", Object)
+], SavedListComponent.prototype, "selectedWord", void 0);
+SavedListComponent = __decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_5" /* Component */])({
+        selector: 'app-saved-list',
+        template: __webpack_require__("../../../../../src/app/saved-list/saved-list.component.html"),
+        styles: [__webpack_require__("../../../../../src/app/saved-list/saved-list.component.css")]
+    }),
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__word_service__["a" /* WordService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__word_service__["a" /* WordService */]) === "function" && _a || Object])
+], SavedListComponent);
+
+var _a;
+//# sourceMappingURL=saved-list.component.js.map
 
 /***/ }),
 
@@ -563,6 +664,37 @@ var WordService = (function () {
         var url = this.baseUrl + "word.json/" + word + "/audio?useCanonical=true&limit=1&api_key=a2a73e7b926c924fad7001ca3111acd55af2ffabf50eb4ae5";
         return this.http.get(url)
             .map(function (res) { return res.json(); }); //convert observable into json format
+    };
+    WordService.prototype.GetList = function () {
+        var key = "randomWordDictionaryArray";
+        return localStorage[key] ? JSON.parse(localStorage[key]) : [];
+    };
+    WordService.prototype.AddToList = function (word) {
+        if (word) {
+            var key = "randomWordDictionaryArray";
+            if (!localStorage[key])
+                localStorage.setItem(key, JSON.stringify([]));
+            var currentArr = JSON.parse(localStorage[key]);
+            if (!currentArr.includes(word)) {
+                currentArr.push(word);
+                localStorage.setItem(key, JSON.stringify(currentArr));
+            }
+            console.log("storage list");
+            console.log(localStorage[key]);
+        }
+    };
+    WordService.prototype.ClearList = function () {
+        localStorage.clear();
+    };
+    WordService.prototype.RemoveFromList = function (word) {
+        var key = "randomWordDictionaryArray";
+        var currentArr = JSON.parse(localStorage[key]);
+        var index = currentArr.indexOf(word);
+        if (index !== -1)
+            currentArr.splice(index, 1);
+        localStorage.setItem(key, JSON.stringify(currentArr));
+        console.log("storage list");
+        console.log(localStorage[key]);
     };
     return WordService;
 }());
