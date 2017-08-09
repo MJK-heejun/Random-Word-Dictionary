@@ -262,7 +262,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/definition/definition.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<p>\r\n    {{definition}}\r\n</p>\r\n"
+module.exports = "<p>\r\n    <!--{{definition}}-->\r\n    <span *ngFor=\"let word of getSplitWord()\" (click)=\"onSpanClick(word)\">\r\n        {{ word }}\r\n    </span>\r\n\r\n</p>\r\n"
 
 /***/ }),
 
@@ -287,6 +287,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var DefinitionComponent = (function () {
     function DefinitionComponent(wordService) {
         this.wordService = wordService;
+        this.newWord = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["F" /* EventEmitter */]();
     }
     DefinitionComponent.prototype.ngOnInit = function () {
     };
@@ -296,7 +297,7 @@ var DefinitionComponent = (function () {
             this.wordService.GetDefinition(this.word).subscribe(//subscribe to the observable return method
             function (//subscribe to the observable return method
                 data) {
-                _this.definition = data[0] ? data[0].text : "definition not found";
+                _this.definition = data[0] ? data[0].text : "definition not found.";
                 if (_this.definition.substring(0, 15) == "Plural form of ") {
                     var newSearchWord = _this.definition.substring(15, _this.definition.length - 1);
                     _this.wordService.GetDefinition(newSearchWord).subscribe(function (data) {
@@ -307,12 +308,22 @@ var DefinitionComponent = (function () {
             }, function (error) { return alert(error); });
         }
     };
+    DefinitionComponent.prototype.getSplitWord = function () {
+        return this.definition ? this.definition.slice(0, -1).split(" ") : [];
+    };
+    DefinitionComponent.prototype.onSpanClick = function (newWord) {
+        this.newWord.emit(newWord);
+    };
     return DefinitionComponent;
 }());
 __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["O" /* Input */])(),
     __metadata("design:type", String)
 ], DefinitionComponent.prototype, "word", void 0);
+__decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_4" /* Output */])(),
+    __metadata("design:type", Object)
+], DefinitionComponent.prototype, "newWord", void 0);
 DefinitionComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_5" /* Component */])({
         selector: 'app-definition',
@@ -348,7 +359,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/random/random.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div id=\"randomComponent\" fxLayout=\"column\" fxLayoutAlign=\"space-between center\">\r\n    <div>\r\n        <h2>\r\n            {{myWord}}\r\n        </h2>\r\n        <app-definition [word]=\"myWord\"></app-definition>\r\n        <app-audio [word]=\"myWord\"></app-audio>\r\n    </div>\r\n    <div fxLayout=\"row\">\r\n        <button md-raised-button (click)=\"onRandomClick()\">New Random Word</button>\r\n        <button md-raised-button (click)=\"onSaveClick()\">Save</button>\r\n    </div>\r\n\r\n</div>"
+module.exports = "<div id=\"randomComponent\" fxLayout=\"column\" fxLayoutAlign=\"space-between center\">\r\n    <div>\r\n        <h2>\r\n            {{myWord}}\r\n        </h2>\r\n        <app-definition (newWord)=\"wordDefComp($event)\"\r\n                        [word]=\"myWord\"></app-definition>\r\n        <app-audio [word]=\"myWord\"></app-audio>\r\n    </div>\r\n    <div fxLayout=\"row\">\r\n        <button md-raised-button (click)=\"onRandomClick()\">New Random Word</button>\r\n        <button md-raised-button (click)=\"onSaveClick()\">Save</button>\r\n    </div>\r\n\r\n</div>"
 
 /***/ }),
 
@@ -378,6 +389,9 @@ var RandomComponent = (function () {
         this.settingService = settingService;
     }
     RandomComponent.prototype.ngOnInit = function () {
+    };
+    RandomComponent.prototype.wordDefComp = function (ev) {
+        this.myWord = ev;
     };
     RandomComponent.prototype.onRandomClick = function () {
         var _this = this;
