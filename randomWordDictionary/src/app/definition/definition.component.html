@@ -1,3 +1,7 @@
 <p>
-    {{definition}}
+    <!--{{definition}}-->
+    <span *ngFor="let word of getSplitWord()" (click)="onSpanClick(word)">
+        {{ word }}
+    </span>
+
 </p>

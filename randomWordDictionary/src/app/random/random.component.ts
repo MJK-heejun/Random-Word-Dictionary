@@ -18,6 +18,11 @@ export class RandomComponent implements OnInit {
    
     }
 
+
+    wordDefComp(ev) {
+        this.myWord = ev;
+    }
+
     onRandomClick() {
         let wordType = this.settingService.GetCurrentWordType() == "any" ? null : this.settingService.GetCurrentWordType();
         

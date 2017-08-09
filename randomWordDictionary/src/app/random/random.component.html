@@ -3,7 +3,8 @@
         <h2>
             {{myWord}}
         </h2>
-        <app-definition [word]="myWord"></app-definition>
+        <app-definition (newWord)="wordDefComp($event)"
+                        [word]="myWord"></app-definition>
         <app-audio [word]="myWord"></app-audio>
     </div>
     <div fxLayout="row">
