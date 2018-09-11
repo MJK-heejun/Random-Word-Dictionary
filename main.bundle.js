@@ -664,18 +664,18 @@ var WordService = (function () {
         this.baseUrl = window.location.protocol == 'https:' ? "https://" + this.baseUrl : "http://" + this.baseUrl;
     }
     WordService.prototype.GetRandomWord = function (wordType) {
-        var randomApi = this.baseUrl + "words.json/randomWord?hasDictionaryDef=true&hasDictionaryDef=false&minCorpusCount=0&maxCorpusCount=-1&minDictionaryCount=1&maxDictionaryCount=-1&minLength=5&maxLength=-1&api_key=a2a73e7b926c924fad7001ca3111acd55af2ffabf50eb4ae5";
+        var randomApi = this.baseUrl + "words.json/randomWord?hasDictionaryDef=true&hasDictionaryDef=false&minCorpusCount=0&maxCorpusCount=-1&minDictionaryCount=1&maxDictionaryCount=-1&minLength=5&maxLength=-1&api_key=d7e00125cd33554cd1c1a509b7f0091f3558955bb416ee24b";
         var url = wordType ? randomApi + "&includePartOfSpeech=" + wordType : randomApi;
         return this.http.get(url)
             .map(function (res) { return res.json(); }); //convert observable into json format
     };
     WordService.prototype.GetDefinition = function (word) {
-        var url = this.baseUrl + "word.json/" + word + "/definitions?limit=1&includeRelated=true&sourceDictionaries=all&useCanonical=true&includeTags=false&api_key=a2a73e7b926c924fad7001ca3111acd55af2ffabf50eb4ae5";
+        var url = this.baseUrl + "word.json/" + word + "/definitions?limit=1&includeRelated=true&sourceDictionaries=all&useCanonical=true&includeTags=false&api_key=d7e00125cd33554cd1c1a509b7f0091f3558955bb416ee24b";
         return this.http.get(url)
             .map(function (res) { return res.json(); }); //convert observable into json format
     };
     WordService.prototype.GetAudioUrl = function (word) {
-        var url = this.baseUrl + "word.json/" + word + "/audio?useCanonical=true&limit=1&api_key=a2a73e7b926c924fad7001ca3111acd55af2ffabf50eb4ae5";
+        var url = this.baseUrl + "word.json/" + word + "/audio?useCanonical=true&limit=1&api_key=d7e00125cd33554cd1c1a509b7f0091f3558955bb416ee24b";
         return this.http.get(url)
             .map(function (res) { return res.json(); }); //convert observable into json format
     };
